@@ -42,10 +42,19 @@ public class App {
         history.setUser(user);
         Calendar c=new GregorianCalendar();
         history.setGivenBook(c.getTime());
-        System.out.printf("Пользователь %s %s взял книгу \"%s\"%n",
+        System.out.printf("Пользователь %s %s взял книгу \"%s\", %s%n",
                 history.getUser().getFirstName(),
                 history.getUser().getLastName(),
-                history.getBook().getBookName()
+                history.getBook().getBookName(),
+                history.getGivenBook()
+                );
+        c=new GregorianCalendar();
+        history.setReturnBook(c.getTime());
+        System.out.printf("Пользователь %s %s взял книгу \"%s\", %s%n",
+                history.getUser().getFirstName(),
+                history.getUser().getLastName(),
+                history.getBook().getBookName(),
+                history.getReturnBook()
                 );
     }
 }
