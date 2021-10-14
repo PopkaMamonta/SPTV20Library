@@ -32,4 +32,10 @@ public class User {
     public void setTel(String tel) {
         this.tel = tel;
     }
+
+    @Override
+    public String toString() {
+        return "Имя: " + firstName + ", Фамилия: " + lastName + ", Номер телефона: " + tel;
+    }
+    
 }

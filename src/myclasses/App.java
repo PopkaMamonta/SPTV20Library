@@ -7,54 +7,51 @@ import entity.History;
 import entity.User;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Scanner;
 
 
 public class App {
     public void run(){
-        //System.out.println("Hello");
-        Book book=new Book();
-        book.setBookName("Voina i mir");
-        book.setReleaseYear(2010);
-        Author[] authors= new Author[1];
-        Author author= new Author();
-        author.setFirstName("Lev");
-        author.setLastName("Tolstoy");
-        author.setBirthYear(1828);
-        User user= new User();
-        user.setFirstName("Andrei");
-        user.setLastName("Koni");
-        user.setTel("+37256843420");
-        authors[0]= author;
-        book.setAuthors(authors);
-        System.out.printf("Создана книга: %s, автор: %s %s, год издания: %d%n",
-                book.getBookName(),
-                book.getAuthors()[0].getFirstName(),
-                book.getAuthors()[0].getLastName(),
-                book.getReleaseYear()
-                );
-        System.out.printf("Имя пользователя: %s , фамилия: %s , номер телефона: %s%n",
-                user.getFirstName(),
-                user.getLastName(),
-                user.getTel()
-                );
-        History history= new History();
-        history.setBook(book);
-        history.setUser(user);
-        Calendar c=new GregorianCalendar();
-        history.setGivenBook(c.getTime());
-        System.out.printf("Пользователь %s %s взял книгу \"%s\", %s%n",
-                history.getUser().getFirstName(),
-                history.getUser().getLastName(),
-                history.getBook().getBookName(),
-                history.getGivenBook()
-                );
-        c=new GregorianCalendar();
-        history.setReturnBook(c.getTime());
-        System.out.printf("Пользователь %s %s взял книгу \"%s\", %s%n",
-                history.getUser().getFirstName(),
-                history.getUser().getLastName(),
-                history.getBook().getBookName(),
-                history.getReturnBook()
-                );
+        String repeat="yes";
+        Scanner scanner=new Scanner(System.in);
+        do{
+            System.out.println("Выберите номер задачи: ");
+            System.out.println("0: Закрыть программу");
+            System.out.println("1: Добавить пользователя");
+            System.out.println("2: Добавить книгу");
+            int task=scanner.nextInt();scanner.nextLine();
+            switch (task) {
+                case 0:
+                    repeat="no";
+                    break;
+                case 1:
+                    User user= new User();
+                    System.out.println("Введите имя пользователя: ");
+                    user.setFirstName(scanner.nextLine());
+                    System.out.println("Введите фамилию пользователя: ");
+                    user.setLastName(scanner.nextLine());
+                    System.out.println("Введите номер телефона пользователя: ");
+                    user.setTel(scanner.nextLine());
+                    System.out.println("Пользователь инициализирован: "+user.toString());
+                    break;
+                case 2:
+                    Book book=new Book();
+                    Author author=new Author();
+                    System.out.println("Введите название книги");
+                    book.setBookName(scanner.nextLine());
+                    System.out.println("Введите имя автора книги");
+                    author.setFirstName(scanner.nextLine());
+                    System.out.println("Введите фамилию автора книги");
+                    author.setLastName(scanner.nextLine());
+                    System.out.println("Введите год издания книги");
+                    book.setReleaseYear(scanner.nextInt());
+                    System.out.println("Книга добавлена: " +book.toString());
+                    System.out.println("Автор: " +author.toString());
+                default:
+                    System.out.println("Выберите номер из списка!");
+            }
+        }while("yes".equals(repeat));
+        System.out.println("Пока!");
+                
     }
 }

@@ -28,5 +28,11 @@ public class Book {
 
     public void setReleaseYear(int releaseYear) {
         this.releaseYear = releaseYear;
-    }    
+    }
+
+    @Override
+    public String toString() {
+        return "Название книги: " + bookName + ", Год издания: " + releaseYear;
+    }
+    
 }
