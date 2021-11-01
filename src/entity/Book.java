@@ -1,7 +1,9 @@
 
 package entity;
 
-public class Book {
+import java.io.Serializable;
+
+public class Book implements Serializable{
     private String bookName;
     private Author[] authors;
     private int releaseYear;
