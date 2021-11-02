@@ -2,11 +2,14 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 public class Book implements Serializable{
     private String bookName;
     private Author[] authors;
     private int releaseYear;
+    private int quantity;
+    private int count;
 
     public String getBookName() {
         return bookName;
@@ -34,7 +37,24 @@ public class Book implements Serializable{
 
     @Override
     public String toString() {
-        return "Название книги: " + bookName + ", Год издания: " + releaseYear;
+        return "Название книги: " + bookName + ",Авторы:  "+ Arrays.toString(authors)+",Год издания: "
+                + releaseYear +",Кол-во эклемпляров: "+quantity+",Какой по счету: "+count;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
     
 }
