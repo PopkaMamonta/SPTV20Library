@@ -20,11 +20,11 @@ public class SaverToFiles implements Keeping{
 
     @Override
     public void saveBooks(List<Book> books) {
-        FileOutputStream fos = null;
-        ObjectOutputStream oos = null;
-        try {
-            fos = new FileOutputStream("books");
-            oos = new ObjectOutputStream(fos);
+        FileOutputStream fos=null;
+        ObjectOutputStream oos=null;
+        try{
+            fos=new FileOutputStream("books");
+            oos=new ObjectOutputStream(fos);
             oos.writeObject(books);
             oos.flush();
         } catch (FileNotFoundException ex) {
