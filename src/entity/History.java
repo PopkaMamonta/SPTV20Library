@@ -1,9 +1,10 @@
 
 package entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class History {
+public class History implements Serializable {
     private Book book;
     private User user;
     private Date givenBook;

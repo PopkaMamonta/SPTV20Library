@@ -22,6 +22,8 @@ public class App {
     private SaverToFiles saverToFiles=new SaverToFiles();
     public App(){
         books=saverToFiles.loadBooks();
+        users=saverToFiles.loadUsers();
+        histories=saverToFiles.loadHistories();
     }
     public void run(){
         String repeat="yes";
@@ -97,6 +99,7 @@ public class App {
         user.setTel(scanner.nextLine());
         System.out.println("Пользователь инициирован: "+user.toString());
         users.add(user);
+        saverToFiles.saveUsers(users);
     }
     private void addBook(){
         Book book=new Book();
@@ -169,6 +172,7 @@ public class App {
         Calendar c=new GregorianCalendar();
         history.setGivenBook(c.getTime());
         histories.add(history);
+        saverToFiles.saveHistories(histories);
         System.out.println("------------------------");
     }
     private void returnBook(){
@@ -180,6 +184,7 @@ public class App {
         int numberHistory=scanner.nextInt();scanner.nextLine();
         Calendar c=new GregorianCalendar();
         histories.get(numberHistory-1).setReturnBook(c.getTime());
+        saverToFiles.saveHistories(histories);
     }
     private void printListReaders(){
         System.out.println("----- Список читателей -----");
